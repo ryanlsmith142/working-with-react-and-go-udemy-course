@@ -16,6 +16,8 @@ func (app *application) getOneMovie(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(params.ByName("id"))
 	if err != nil {
 		app.logger.Print(errors.New("invalid id parameter"))
+		app.errorJSON(w, err)
+		return
 	}
 
 	app.logger.Println("id is", id)
@@ -32,6 +34,9 @@ func (app *application) getOneMovie(w http.ResponseWriter, r *http.Request) {
 		CreateAt:    time.Now(),
 		UpdatedAt:   time.Now(),
 	}
+
+	err = app.writeJSON(w, http.StatusOK, movie, "movie")
+
 }
 
 func (app *application) getAllMovies(w http.ResponseWriter, r *http.Request) {
