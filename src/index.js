@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-// import AppFooter from './AppFooter';
+import AppFooter from './AppFooter';
 import AppContent from './AppContent';
 import AppHeader from './AppHeader';
-import AppFooterFunctionalComponent from './AppFooterFunctionalComponent';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -27,12 +26,12 @@ class App extends Component {
       subject: "My subject",
       favourite_color: "red",
     }
+
     return (
     <div className="app">
         <AppHeader {...myProps} posts={this.state.posts} handlePostChange={this.handlePostChange} />
-        <AppContent handlePostChange={this.handlePostChange}/>
-        <AppFooterFunctionalComponent myProperty={"Hello, World"}/>
-        {/* <AppFooter /> */}
+        <AppContent posts={this.state.posts} handlePostChange={this.handlePostChange}/>
+        <AppFooter />
     </div>
     )
   }

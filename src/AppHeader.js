@@ -10,6 +10,7 @@ export default class AppHeader extends Component {
     handlePostChange(posts) {
         this.props.handlePostChange(posts);
     }
+    
     render() {
 
         return (
