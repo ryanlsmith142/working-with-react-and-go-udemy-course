@@ -29,10 +29,10 @@ export default function App() {
               <Link to="/movies">Movies</Link>
             </li>
             <li className="list-group-item">
-              <Link to="/genres">Categories</Link>
+              <Link to="/genres">Genres</Link>
             </li>
             <li className="list-group-item">
-              <Link to="/admin">Admin</Link>
+              <Link to="/admin">Manage Catalogue</Link>
             </li>
           </ul>
         </nav>
@@ -53,14 +53,14 @@ export default function App() {
           <Route 
           exact 
           path="/genres/drama" 
-          render={(props) => <Categories {...props} title={`Drama`} />}
+          render={(props) => <Genres {...props} title={`Drama`} />}
           /> 
 
           <Route 
           exact 
           path="/genres/comedy" 
-          render={(props) => <Categories {...props} title={`Comedy`} />}
-          /> 
+          render={(props) => <Genres {...props} title={`Comedy`} />}
+          />  
             
           <Route path="/admin">
             <Admin />
