@@ -41,11 +41,7 @@ func main() {
 
 	flag.IntVar(&cfg.port, "port", 4000, "Server port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application environment (development | production ")
-
-
 	flag.StringVar(&cfg.db.dsn, "dsn", localDSN, "Postgres connection string")
-
-
 	flag.Parse()
 
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
