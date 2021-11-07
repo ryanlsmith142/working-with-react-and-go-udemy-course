@@ -155,8 +155,8 @@ VALUES
 (6,	'Mystery',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00'),
 (7,	'Adventure',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00'),
 (8,	'Comedy',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00'),
-(9,	'Romance',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00')
-\.
+(9,	'Romance',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00');
+
 
 
 --
@@ -168,8 +168,8 @@ INSERT INTO movies (id, title, description, year, release_date, runtime, rating,
 VALUES (1,	'The Shawshank Redemption',	'Two imprisoned men bond over a number of years',	1994,	'1994-10-14',	142,	5,	'R',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00'),
 (2,	'The Godfather',	'The aging patriarch of an organized crime dynasty transfers control to his son',	1972,	'1972-03-24',	175,	5,	'R',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00'),
 (4,	'American Psycho', 'A wealthy New York investment banking executive hides his alternate psychopathic ego',	2000,	'2000-04-14',	102,	4,	'R',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00'),
-(3, 'The Dark Knight',	'The menace known as the Joker wreaks havoc on Gotham City',	2008,	'2008-07-18',	152,	5,	'PG13',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00')
-\.
+(3, 'The Dark Knight',	'The menace known as the Joker wreaks havoc on Gotham City',	2008,	'2008-07-18',	152,	5,	'PG13',	'2021-05-17 00:00:00',	'2021-05-17 00:00:00');
+
 
 
 --
@@ -177,8 +177,7 @@ VALUES (1,	'The Shawshank Redemption',	'Two imprisoned men bond over a number of
 --
 
 COPY public.movies_genres (id, movie_id, genre_id, created_at, updated_at) FROM stdin;
-
-SELECT * FROM movie_genres
+SELECT * FROM movie_genres;
 
 --
 -- Name: genres_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
@@ -245,3 +244,4 @@ ALTER TABLE ONLY public.movies_genres
 -- PostgreSQL database dump complete
 --
 
+\.
