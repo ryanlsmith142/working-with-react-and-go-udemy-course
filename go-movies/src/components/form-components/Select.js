@@ -9,7 +9,7 @@ const Select = (props) => {
         <select
             className="form-select"
             name={props.name}
-            value{props.value}
+            value={props.value}
             onChange={props.handleChange}
             >
 
