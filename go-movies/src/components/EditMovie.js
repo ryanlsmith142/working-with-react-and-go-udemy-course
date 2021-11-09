@@ -20,13 +20,14 @@ export default class EditMovie extends Component {
             },
             mpaaOptions: [
                 {id: "G", value: "G"},
-                {id: "PG", value: "GPG"},
+                {id: "PG", value: "PG"},
                 {id: "PG13", value: "PG13"},
                 {id: "R", value: "R"},
                 {id: "NC17", value: "NC17"}
             ],
             isLoaded: false,
             error: null,
+            errors: [],
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,8 +35,35 @@ export default class EditMovie extends Component {
     }
 
     handleSubmit = (evt) => {
-        console.log("Form was submitted");
         evt.preventDefault();
+
+        // client side validation
+        let errors = [];
+        if (this.state.movie.title === "") {
+            errors.push("title");
+        }
+
+        this.setState({errors: errors});
+
+        if (errors.length > 0) {
+            return false;
+        }
+
+        const data = new FormData(evt.target);
+
+        const payload = Object.fromEntries(data.entries());
+
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify(payload)
+        }
+
+        fetch('http://localhost:4000/v1/admin/editmovie', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+        console.log(payload);
     }
 
     handleChange = (evt) => {
@@ -49,6 +77,9 @@ export default class EditMovie extends Component {
         }))
     }
 
+    hasError(key) {
+        return this.state.errors.indexOf(key) !== -1;
+    }
     componentDidMount() {
         const id = this.props.match.params.id;
         if (id > 0) {
@@ -115,10 +146,13 @@ export default class EditMovie extends Component {
 
                         <Input
                             title={'Title'}
+                            className={this.hasError("title") ? "is-invalid" : ""}
                             type={'text'}
                             name={'title'}
                             value={movie.title}
                             handleChange={this.handleChange}
+                            errorDiv={this.hasError("title") ? "text-danger" : "d-none"}
+                            errorMsg={"Please enter a title"}
                         />
 
                         <Input
