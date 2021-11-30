@@ -7,6 +7,7 @@ import OneMovie from './components/OneMovie';
 import Genres from './components/Genres';
 import OneGenre from './components/OneGenre';
 import EditMovie from './components/EditMovie';
+import Login from "./components/Login";
 
 export default class App extends Component {
 
@@ -87,6 +88,8 @@ export default class App extends Component {
                   </Route>
 
                   <Route path="/genre/:id" component={OneGenre}/>
+
+                  <Route path="/login" component={(props) => <Login {...props} handleJWTChange={this.handleJWTChange}/>}/>
 
                   <Route path="/genres">
                     <Genres/>
