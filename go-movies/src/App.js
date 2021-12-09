@@ -14,7 +14,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      jwt: "xxx",
+      jwt: "",
     }
 
     this.handleJWTChange(this.handleJWTChange.bind(this))
@@ -109,11 +109,16 @@ export default class App extends Component {
                       path="/genres/comedy"
                       render={(props) => <Genres {...props} title={`Comedy`}/>}
                   />
-                  <Route path="/admin/movie/:id" component={EditMovie}/>
+                  <Route path="/admin/movie/:id" component={(props) => (
+                      <EditMovie {...props} jwt={this.state.jwt} />
+                  )}/>
 
-                  <Route path="/admin">
-                    <Admin/>
-                  </Route>
+                  {/*<Route path="/admin">*/}
+                  {/*  <Admin/>*/}
+                  {/*</Route>*/}
+                  <Route path="/admin" component={(props) => (
+                      <Admin {...props} jwt={this.state.jwt} />
+                  )}/>
 
                   <Route path="/">
                     <Home/>
